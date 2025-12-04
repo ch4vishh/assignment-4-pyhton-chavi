@@ -6,18 +6,18 @@ weather report
 This is my mini project for the subject **Programming for Problem Solving using Python**.  
 In this project, I analysed **Delhi weather data** using Python libraries like Pandas, NumPy and Matplotlib.
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 📌 Project Objectives
+##  Project Objectives
 - Load a real weather CSV file  
 - Clean the data (remove missing values, convert date)  
 - Do basic statistics like mean, min, max  
 - Make graphs for temperature, rainfall and humidity  
 - Save cleaned data and create a small report  
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 📁 Dataset Used
+##  Dataset Used
 I used a dataset called **delhi_weather.csv**.  
 It has these columns:
 
@@ -27,20 +27,18 @@ It has these columns:
 - humidity  
 - rainfall  
 
-I converted them into proper format in the code.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----
-
-## 🛠 Tools & Libraries
+##  Tools & Libraries
 - Python  
 - Pandas  
 - NumPy  
 - Matplotlib  
 - VS Code  
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 📊 Visualizations Made
+##  Visualizations Made
 The program creates the following graphs:
 
 - Temperature Line Chart  
@@ -50,9 +48,9 @@ The program creates the following graphs:
 
 All graphs are saved in the **visualizations** folder.
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 📂 Files in This Project
+##  Files in This Project
 - `weather_visualizer.py` → the main Python program  
 - `delhi_weather.csv` → original dataset  
 - `cleaned_weather_data.csv` → cleaned output data  
@@ -60,9 +58,9 @@ All graphs are saved in the **visualizations** folder.
 - `README.md` → you are reading it  
 - `visualizations/` → folder with PNG graph images  
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## ▶ How to Run
+##  How to Run
 1. Install Python  
 2. Install required libraries:  
    ```
@@ -75,16 +73,14 @@ All graphs are saved in the **visualizations** folder.
    ```
 5. Check the output files and graphs
 
----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## ✅ Conclusion
+##  Conclusion
 This mini project helped me understand:
 - how to work with real data  
 - how to clean and analyse datasets  
 - how to create graphs using Python  
 - how to generate reports automatically  
 
-It was a good learning experience for me as a first-semester student.
 
----
 
