@@ -8,13 +8,11 @@ import os
 
 print("Weather Project Started\n")
 
-# Make visualizations folder
+#create a folder named visualizatuin
 if not os.path.exists("visualizations"):
     os.makedirs("visualizations")
 
-# ---------------------------
-# Step 1: Load Data
-# ---------------------------
+#load data 
 data = pd.read_csv("delhi_weather.csv")
 
 print("First 5 rows:")
@@ -26,53 +24,44 @@ print(data.info())
 print("\nNumber Stats:")
 print(data.describe())
 
-# ---------------------------
-# Step 2: Cleaning the Data
-# ---------------------------
+#clean the Data
 print("\nCleaning the data...")
 
-# Convert date column
+#convert date column
 data["Date"] = pd.to_datetime(data["date"], errors="coerce")
 
-# Match dataset columns
+#match dataset columns
 data["MinTemp"] = data["mintemp"]
 data["MaxTemp"] = data["maxtemp"]
 data["Rainfall"] = data["rainfall"]
 data["Humidity9am"] = data["humidity"]
 data["Humidity3pm"] = data["humidity"]
 
-# Select needed columns
+#select needed columns
 needed_cols = ["Date", "MinTemp", "MaxTemp", "Rainfall", "Humidity9am", "Humidity3pm"]
 cleaned = data[needed_cols].dropna()
 
-# New computed fields
+
 cleaned["TempAvg"] = (cleaned["MinTemp"] + cleaned["MaxTemp"]) / 2
 cleaned["HumAvg"] = (cleaned["Humidity9am"] + cleaned["Humidity3pm"]) / 2
 
 print("\nAfter cleaning:")
 print(cleaned.head())
 
-# ---------------------------
-# Step 3: NumPy Statistics
-# ---------------------------
+#numPy statics
 temp_arr = cleaned["TempAvg"].values
 rain_arr = cleaned["Rainfall"].values
 hum_arr = cleaned["HumAvg"].values
 
-# ---------------------------
-# Step 4: Grouping
-# ---------------------------
 cleaned["Month"] = cleaned["Date"].dt.month
 month_rain = cleaned.groupby("Month")["Rainfall"].sum()
 
-# ---------------------------
-# Step 5: Graphs
-# ---------------------------
+#graphs
 print("\nCreating graphs...")
 
 sample_year = cleaned.head(365)
 
-# 1. Line Chart
+# (1) Line Chart
 plt.plot(sample_year["Date"], sample_year["TempAvg"])
 plt.title("Daily Temperature Trend")
 plt.xlabel("Date")
@@ -82,7 +71,7 @@ plt.tight_layout()
 plt.savefig("visualizations/temp_graph.png")
 plt.close()
 
-# 2. Bar Chart
+# (2) Bar Chart
 plt.bar(month_rain.index, month_rain.values)
 plt.title("Monthly Rainfall")
 plt.xlabel("Month")
@@ -90,7 +79,7 @@ plt.ylabel("Rainfall")
 plt.savefig("visualizations/rain_graph.png")
 plt.close()
 
-# 3. Scatter Plot
+# (3) Scatter Plot
 plt.scatter(cleaned["HumAvg"], cleaned["TempAvg"], alpha=0.5)
 plt.title("Humidity vs Temperature")
 plt.xlabel("Avg Humidity")
@@ -98,7 +87,7 @@ plt.ylabel("Avg Temperature")
 plt.savefig("visualizations/hum_temp_graph.png")
 plt.close()
 
-# 4. Combined Plot
+# (4) Combined Plot
 fig, ax = plt.subplots(1, 2, figsize=(12, 5))
 
 ax[0].plot(sample_year["Date"], sample_year["TempAvg"])
@@ -112,14 +101,10 @@ plt.tight_layout()
 plt.savefig("visualizations/combined_graph.png")
 plt.close()
 
-# ---------------------------
-# Step 6: Save Cleaned Data
-# ---------------------------
+#save cleaned datta
 cleaned.to_csv("cleaned_weather_data.csv", index=False)
 
-# ---------------------------
-# Step 7: Create Final Report
-# ---------------------------
+#report 
 report_text = f"""
 # Weather Data Visualizer – Project Report
 **Dataset:** Delhi Weather  
@@ -201,3 +186,4 @@ with open("weather_analysis_report.md", "w", encoding="utf-8") as r:
     r.write(report_text)
 
 print("\nWeather Project Finished!")
+
